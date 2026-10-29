@@ -1,0 +1,8 @@
+ENTRAMADOS · Taller de teoría feminista y antropología (v1.0)
+Antropología y perspectivas de género (UNED, 70023095)
+
+Uso: abrir index.html desde un servidor local (p. ej. `python3 -m http.server`) o subir la carpeta
+a GitHub Pages. Necesita conexión para cargar Three.js 0.160.0 desde jsDelivr y las fuentes.
+Estructura: js/ (núcleo), datos/ (contenido editable), css/.
+Rutas: #e1…#e10, #estudio, #tarjetas, #simulador, #examen, #glosario, #bibliografia, #guia, #docente.
+Elaborado con asistencia de IA (Claude, Anthropic). Requiere revisión docente. CC BY-NC 4.0.

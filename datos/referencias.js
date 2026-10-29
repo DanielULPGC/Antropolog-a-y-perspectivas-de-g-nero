@@ -1,0 +1,118 @@
+/*
+ * Entramados · referencias
+ * Formato APA 7. Tipos: base (manuales y guía), obra (obras citadas por los manuales, en la edición que ellos citan),
+ * amplia (ampliación que no figura en los manuales: «amplía, no sustituye»).
+ * «doi» solo cuando se ha contrastado (29-10-2026) en la página del editor o en la lista verificada de la asignatura.
+ * «nota» declara lo que no se ha contrastado o las discrepancias de fecha detectadas.
+ */
+window.REFERENCIAS = {
+  /* ---------- Base ---------- */
+  hc2012: {
+    cita: "Hernández Corrochano, E. (2012). Teoría feminista y antropología: claves analíticas. Editorial Universitaria Ramón Areces. ISBN 978-84-9961-019-1",
+    tipo: "base",
+    nota: "Lectura obligatoria: capítulos 1-5. Las páginas citadas en el recurso («HC, p.») siguen la paginación impresa del ejemplar aportado (pp. 32-123 y bibliografía, pp. 124-130). Año e ISBN, según la guía de la asignatura: el escaneado no incluye la página de créditos."
+  },
+  mendez2007: {
+    cita: "Méndez, L. (2007). Antropología feminista. Síntesis. ISBN 978-84-9756-540-0",
+    tipo: "base",
+    nota: "Lectura obligatoria: capítulos 3-7 (pp. 55-232). Las páginas citadas («M, p.») siguen la paginación impresa del ejemplar aportado, cuyo depósito legal es de 2008 (M. 36.692-2008); compruébese si la paginación coincide con la edición propia."
+  },
+  guia2627: {
+    cita: "Universidad Nacional de Educación a Distancia. (2026). Guía de la asignatura Antropología y perspectivas de género (70023095). Curso 2026/2027. Grado en Antropología Social y Cultural.",
+    tipo: "base",
+    nota: "Fechas, ponderaciones y formato de la prueba cambian de curso en curso: prevalece siempre la guía vigente y el curso virtual."
+  },
+
+  /* ---------- Obras citadas por Hernández Corrochano (caps. 1-5) ---------- */
+  rousseau1762: { cita: "Rousseau, J.-J. (1997). Emilio, o De la educación. Alianza. (Obra original publicada en 1762)", tipo: "obra", nota: "Edición citada en HC." },
+  wollstonecraft1792: { cita: "Wollstonecraft, M. (2005). Vindicación de los derechos de la mujer. Istmo. (Obra original publicada en 1792)", tipo: "obra", nota: "Edición citada en HC." },
+  fraisse1991: { cita: "Fraisse, G. (1991). La musa de la razón. Cátedra.", tipo: "obra" },
+  crampe1994: { cita: "Crampe-Casnabet, M. (1994). Las mujeres en las obras filosóficas del siglo XVIII. En G. Duby y M. Perrot (Dirs.), Historia de las mujeres: Vol. 3. Del Renacimiento a la Edad Moderna (pp. 335-369). Círculo de Lectores.", tipo: "obra" },
+  cobo1995: { cita: "Cobo, R. (1995). Fundamentos del patriarcado moderno: Jean-Jacques Rousseau. Cátedra.", tipo: "obra" },
+  pateman1988: { cita: "Pateman, C. (1988). The sexual contract. Stanford University Press.", tipo: "amplia", nota: "Obra en la que se formula la hipótesis del contrato sexual; HC la recoge a través de Cobo (1995). Edición española: El contrato sexual (Anthropos, 1995)." },
+  pizan1405: { cita: "Pizan, C. de. (2000). La ciudad de las damas. Siruela. (Obra original escrita en 1405)", tipo: "obra" },
+  poullain1673: { cita: "Poullain de la Barre, F. (1673). De l'égalité des deux sexes, discours physique et moral où l'on voit l'importance de se défaire des préjugés. Jean du Puis.", tipo: "obra", nota: "HC lo cita a través de Cobo (1995), Sonnet (1994) y Cazés (2007)." },
+  condorcet1790: { cita: "Condorcet, N. de. (1790). Sur l'admission des femmes au droit de cité. Journal de la Société de 1789, 5.", tipo: "obra", nota: "HC lo cita a través de Jiménez (1992) y Fraisse (1991)." },
+  gouges1791: { cita: "Gouges, O. de. (1791). Déclaration des droits de la femme et de la citoyenne.", tipo: "obra" },
+  varela2008: { cita: "Varela, N. (2008). Feminismo para principiantes. Ediciones B.", tipo: "obra" },
+  amoros1997: { cita: "Amorós, C. (1997). Tiempo de feminismo: sobre feminismo, proyecto ilustrado y postmodernidad. Cátedra.", tipo: "obra" },
+  valcarcel1997: { cita: "Valcárcel, A. (1997). La política de las mujeres. Cátedra.", tipo: "obra" },
+  mill1869: { cita: "Stuart Mill, J. y Taylor Mill, H. (2001). Ensayos sobre la igualdad sexual. Cátedra.", tipo: "obra", nota: "Reúne «Primeros ensayos sobre matrimonio y divorcio» (1832), «La concesión del derecho de voto a las mujeres» (H. Taylor Mill, 1851) y «La sujeción de las mujeres» (J. S. Mill, redactada en 1861 y publicada en 1869). HC fecha esta última unas veces en 1861 y otras en 1869." },
+  engels1884: { cita: "Engels, F. (1999). El origen de la familia, la propiedad privada y el Estado. Peña Hermanos. (Obra original publicada en 1884)", tipo: "obra", nota: "Edición citada en HC; M usa la de 1980." },
+  bachofen1861: { cita: "Bachofen, J. J. (1998). El derecho materno. En Historia arcaica del derecho materno. Anthropos. (Obra original publicada en 1861)", tipo: "obra" },
+  heritier1996: { cita: "Héritier, F. (1996). Masculino/femenino: el pensamiento de la diferencia. Ariel.", tipo: "obra" },
+  hartmann1980: { cita: "Hartmann, H. (1988). Un matrimonio mal avenido: hacia una unión más progresiva entre marxismo y feminismo. Papers de la Fundació, 88. (Obra original publicada en 1979)", tipo: "obra", nota: "HC fecha el original en 1980. El artículo apareció en Capital & Class en 1979 y se reimprimió en L. Sargent (Ed.), Women and revolution (1981). DOI del original no contrastado en esta revisión." },
+  tristan1843: { cita: "Tristán, F. (1843). L'Union ouvrière. Prévot.", tipo: "obra", nota: "HC la cita a través de Urién (2005) y De Miguel y Romero (2003)." },
+  demiguel2005: { cita: "De Miguel, A. (2005). La articulación del feminismo y el socialismo: el conflicto clase-género. En C. Amorós y A. de Miguel (Eds.), Teoría feminista: de la Ilustración a la globalización (Vol. 1, pp. 295-332). Minerva.", tipo: "obra" },
+  kollontai1977: { cita: "Kollontái, A. (1977). La mujer nueva y la moral sexual. Ayuso.", tipo: "obra" },
+  scott1997: { cita: "Scott, J. W. (1997). El problema de la invisibilidad. En C. Ramos (Comp.), Género e historia (pp. 38-65). Instituto Mora.", tipo: "obra" },
+  beauvoir1949: { cita: "Beauvoir, S. de. (2002). El segundo sexo (2 vols.). Cátedra. (Obra original publicada en 1949)", tipo: "obra", nota: "HC cita la edición de 2002; M cita la francesa (Gallimard, 1978 [1949]) y la española de 1995." },
+  badinter1993: { cita: "Badinter, E. (1993). XY: la identidad masculina. Alianza. (Obra original publicada en 1992)", tipo: "obra", nota: "El manual escribe «Bandinter»; la grafía correcta es Badinter." },
+  friedan1963: { cita: "Friedan, B. (1974). La mística de la feminidad. Júcar. (Obra original publicada en 1963)", tipo: "obra" },
+  harding1987: { cita: "Harding, S. (1987). Is there a feminist method? En S. Harding (Ed.), Feminism and methodology (pp. 1-14). Indiana University Press.", tipo: "obra", nota: "HC cita la traducción «¿Existe un método feminista?» disponible en línea." },
+  amoros2005: { cita: "Amorós, C. (2005). Feminismo y multiculturalismo. En C. Amorós y A. de Miguel (Eds.), Teoría feminista: de la Ilustración a la globalización (Vol. 3, pp. 215-264). Minerva.", tipo: "obra" },
+
+  /* ---------- Obras citadas por Méndez (caps. 3-7) ---------- */
+  malinowski1927: { cita: "Malinowski, B. (1976). Sexo y represión en la sociedad primitiva. Nueva Visión. (Obra original publicada en 1927)", tipo: "obra", nota: "M cita la paginación de esta edición; compruébese en la bibliografía del manual (pp. 237 y ss.)." },
+  malinowski1929: { cita: "Malinowski, B. (1975). La vida sexual de los salvajes del noroeste de la Melanesia. Morata. (Obra original publicada en 1929)", tipo: "obra" },
+  weiner1976: { cita: "Weiner, A. B. (1976). Women of value, men of renown: New perspectives in Trobriand exchange. University of Texas Press.", tipo: "obra" },
+  mead1928: { cita: "Mead, M. (1981). Adolescencia, sexo y cultura en Samoa. Laia. (Obra original publicada en 1928)", tipo: "obra" },
+  mead1935: { cita: "Mead, M. (1981). Sexo y temperamento en las sociedades primitivas. Laia. (Obra original publicada en 1935)", tipo: "obra" },
+  mead1949: { cita: "Mead, M. (1966). L'un et l'autre sexe. Gonthier. (Obra original publicada en 1949 como Male and female)", tipo: "obra", nota: "M fecha el original en 1948; la edición estadounidense (William Morrow) es de 1949." },
+  benedict1934: { cita: "Benedict, R. (1950). Échantillons de civilisations. Gallimard. (Obra original publicada en 1934 como Patterns of culture)", tipo: "obra" },
+  freeman1983: { cita: "Freeman, D. (1983). Margaret Mead and Samoa: The making and unmaking of an anthropological myth. Harvard University Press.", tipo: "obra" },
+  tcherkezoff2001: { cita: "Tcherkézoff, S. (2001). Le mythe occidental de la sexualité polynésienne, 1928-1999. Presses Universitaires de France.", tipo: "obra" },
+  levistrauss1949: { cita: "Lévi-Strauss, C. (1998). Las estructuras elementales del parentesco. Paidós. (Obra original publicada en 1949)", tipo: "obra", nota: "M cita la francesa (Mouton, 1981 [1949]) y recomienda los caps. 1-5 de la española." },
+  chaperon1997: { cita: "Chaperon, S. (1997). La deuxième Simone de Beauvoir. Les Temps Modernes, 593.", tipo: "obra" },
+  ardener1972: { cita: "Ardener, E. (1972). Belief and the problem of women. En J. S. La Fontaine (Ed.), The interpretation of ritual: Essays in honour of A. I. Richards (pp. 135-158). Tavistock.", tipo: "obra" },
+  molyneux1977: { cita: "Molyneux, M. (1977). Androcentrism in Marxist anthropology. Critique of Anthropology, 3(9-10), 55-81.", tipo: "obra", nota: "DOI no contrastado en esta revisión." },
+  lacoste1977: { cita: "Lacoste-Dujardin, C. (1977). Dialogue de femmes en ethnologie. Maspero.", tipo: "obra" },
+  rohrlich1974: { cita: "Rohrlich-Leavitt, R., Sykes, B. y Weatherford, E. (1979). La mujer aborigen: el hombre y la mujer. Perspectivas antropológicas. En O. Harris y K. Young (Eds.), Antropología y feminismo. Anagrama. (Obra original publicada en 1974)", tipo: "obra", nota: "Fecha del original según M." },
+  harrisyoung1979: { cita: "Harris, O. y Young, K. (Eds.). (1979). Antropología y feminismo. Anagrama.", tipo: "obra", nota: "Antología en castellano por la que M cita a Ortner, Rosaldo, Strathern, Sacks, Bamberger, Webster y Newton, y Rohrlich-Leavitt et al." },
+  mathieu1991: { cita: "Mathieu, N.-C. (1991). L'anatomie politique: catégorisations et idéologies du sexe. Côté-femmes.", tipo: "obra", nota: "Reúne «Notes pour une définition sociologique des catégories de sexe» (1971), «Homme-culture et femme-nature?» (1973), «Quand céder n'est pas consentir» (1985) e «Identité sexuelle/sexuée/de sexe?» (1989)." },
+  oakley1972: { cita: "Oakley, A. (1977). La mujer discriminada: biología y sociedad. Debate. (Obra original publicada en 1972 como Sex, gender and society)", tipo: "obra" },
+  strathern1974: { cita: "Strathern, M. (1979). Una perspectiva antropológica. En O. Harris y K. Young (Eds.), Antropología y feminismo (pp. 133-152). Anagrama. (Obra original publicada en 1974)", tipo: "obra", nota: "Fecha del original según M; no contrastada." },
+  rubin1975: { cita: "Rubin, G. (1986). El tráfico de mujeres: notas sobre la «economía política» del sexo. Nueva Antropología, 8(30), 95-145. (Obra original publicada en 1975)", tipo: "obra", nota: "El original (en R. R. Reiter, Ed., Toward an anthropology of women, Monthly Review Press, 1975) no tiene DOI. La reimpresión en Deviations: A Gayle Rubin reader (Duke University Press, 2012) sí: 10.1215/9780822394068." },
+  millett1969: { cita: "Millett, K. (1995). Política sexual. Cátedra. (Obra original publicada en 1970)", tipo: "obra", nota: "M escribe «Millet» y fecha el original en 1969; Sexual politics se publicó en 1970 (Doubleday)." },
+  delphy1985: { cita: "Delphy, C. (1985). Por un feminismo materialista: el enemigo principal y otros ensayos. La Sal.", tipo: "obra", nota: "Incluye «El enemigo principal» (1970)." },
+  firestone1970: { cita: "Firestone, S. (1976). La dialéctica del sexo. Kairós. (Obra original publicada en 1970)", tipo: "obra" },
+  bamberger1974: { cita: "Bamberger, J. (1979). El mito del matriarcado: ¿por qué gobiernan los hombres en las sociedades primitivas? En O. Harris y K. Young (Eds.), Antropología y feminismo (pp. 63-81). Anagrama. (Obra original publicada en 1974)", tipo: "obra" },
+  webster1974: { cita: "Webster, P. y Newton, E. (1979). Matriarcado: enigma y paradigma. En O. Harris y K. Young (Eds.), Antropología y feminismo (pp. 83-106). Anagrama. (Obra original publicada en 1974)", tipo: "obra", nota: "Fecha del original según M; no contrastada." },
+  magli1978: { cita: "Magli, I. (1978). Matriarcato e potere delle donne. Feltrinelli.", tipo: "obra" },
+  ortner1972: { cita: "Ortner, S. B. (1972). Is female to male as nature is to culture? Feminist Studies, 1(2), 5-31.", doi: "10.2307/3177638", tipo: "obra", nota: "M cita la versión incluida en Rosaldo y Lamphere (1974) por su traducción española: «¿Es la mujer con respecto al hombre lo que la naturaleza con respecto a la cultura?», en Harris y Young (1979), pp. 109-131." },
+  rosaldo1974: { cita: "Rosaldo, M. Z. (1979). Mujer, cultura y sociedad: una visión teórica. En O. Harris y K. Young (Eds.), Antropología y feminismo (pp. 153-180). Anagrama. (Obra original publicada en 1974)", tipo: "obra" },
+  rosaldolamphere1974: { cita: "Rosaldo, M. Z. y Lamphere, L. (Eds.). (1974). Woman, culture, and society. Stanford University Press.", tipo: "obra" },
+  chodorow1974: { cita: "Chodorow, N. (1974). Family structure and feminine personality. En M. Z. Rosaldo y L. Lamphere (Eds.), Woman, culture, and society (pp. 43-66). Stanford University Press.", tipo: "obra" },
+  sacks1974: { cita: "Sacks, K. (1979). Engels revisitado: las mujeres, la organización de la producción y la propiedad privada. En O. Harris y K. Young (Eds.), Antropología y feminismo (pp. 247-266). Anagrama. (Obra original publicada en 1974)", tipo: "obra" },
+  edholm1977: { cita: "Edholm, F., Harris, O. y Young, K. (1982). Conceptualisation des femmes. Nouvelles Questions Féministes, 3, 37-69. (Obra original publicada en 1977)", tipo: "obra" },
+  guillaumin1978: { cita: "Guillaumin, C. (1978). Pratique du pouvoir et idée de Nature (I). L'appropriation des femmes. Questions Féministes, 2, 5-30.", tipo: "obra" },
+  tabet1979: { cita: "Tabet, P. (1979). Les mains, les outils, les armes. L'Homme, 19(3-4), 5-61.", tipo: "obra", nota: "DOI no contrastado en esta revisión." },
+  boserup1970: { cita: "Boserup, E. (1999). La mujer y el desarrollo económico. Minerva. (Obra original publicada en 1970)", tipo: "obra" },
+  stolcke1974: { cita: "Stolcke, V. (1992). Racismo y sexualidad en la Cuba colonial. Alianza. (Obra original publicada en 1974)", tipo: "obra", nota: "M escribe «Stokke». El original apareció en 1974 firmado como Verena Martínez-Alier (Marriage, class and colour in nineteenth-century Cuba)." },
+  quinn1977: { cita: "Quinn, N. (1977). Anthropological studies on women's status. Annual Review of Anthropology, 6, 181-225.", tipo: "obra", nota: "DOI no contrastado en esta revisión." },
+  rogers1978: { cita: "Rogers, S. C. (1978). Woman's place: A critical review of anthropological theory. Comparative Studies in Society and History, 20(1), 123-162.", tipo: "obra", nota: "DOI no contrastado en esta revisión." },
+  tilly1978: { cita: "Tilly, L. A. (1978). The social sciences and the study of women: A review article. Comparative Studies in Society and History, 20(1), 163-173.", tipo: "obra", nota: "DOI no contrastado en esta revisión." },
+  rosaldo1980: { cita: "Rosaldo, M. Z. (1980). The use and abuse of anthropology: Reflections on feminism and cross-cultural understanding. Signs, 5(3), 389-417.", doi: "10.1086/493727", tipo: "obra" },
+  hooks1984: { cita: "hooks, b. (2004). Mujeres negras: dar forma a la teoría feminista. En Otras inapropiables: feminismos desde las fronteras (pp. 33-50). Traficantes de Sueños. (Obra original publicada en 1984)", tipo: "obra", nota: "La autora firma en minúsculas; M escribe «Hooks, B.»." },
+  maccormack1980: { cita: "MacCormack, C. y Strathern, M. (Eds.). (1980). Nature, culture and gender. Cambridge University Press.", tipo: "obra" },
+  ortnerwhitehead1981: { cita: "Ortner, S. B. y Whitehead, H. (Eds.). (1981). Sexual meanings: The cultural construction of gender and sexuality. Cambridge University Press.", tipo: "obra" },
+  collier1987: { cita: "Collier, J. F. y Yanagisako, S. J. (1987). Toward a unified analysis of gender and kinship. En J. F. Collier y S. J. Yanagisako (Eds.), Gender and kinship: Essays toward a unified analysis (pp. 14-50). Stanford University Press.", tipo: "obra" },
+  scott1986: { cita: "Scott, J. W. (1986). Gender: A useful category of historical analysis. The American Historical Review, 91(5), 1053-1075.", doi: "10.2307/1864376", tipo: "obra", nota: "Existe un segundo DOI vigente del editor (10.1086/ahr/91.5.1053). M cita la traducción: «El género: una categoría útil para el análisis histórico», en J. S. Amelang y M. Nash (Eds.), Historia y género (pp. 23-56), Alfons el Magnànim, 1990." },
+  harding1986: { cita: "Harding, S. (1996). Ciencia y feminismo. Morata. (Obra original publicada en 1986)", tipo: "obra" },
+  haraway1991: { cita: "Haraway, D. J. (1995). Ciencia, cyborgs y mujeres: la reinvención de la naturaleza. Cátedra. (Obra original publicada en 1991)", tipo: "obra" },
+  strathern1988: { cita: "Strathern, M. (1988). The gender of the gift: Problems with women and problems with society in Melanesia. University of California Press.", doi: "10.1525/9780520910713", tipo: "obra" },
+  butler1990: { cita: "Butler, J. (2001). El género en disputa: el feminismo y la subversión de la identidad. Paidós. (Obra original publicada en 1990)", tipo: "obra", nota: "El original de 1990 no tiene DOI propio localizado; las ediciones electrónicas de Routledge sí, pero corresponden a otras ediciones." },
+  rich1980: { cita: "Rich, A. (1980). Compulsory heterosexuality and lesbian existence. Signs, 5(4), 631-660.", doi: "10.1086/493756", tipo: "obra", nota: "M cita la traducción francesa en Nouvelles Questions Féministes (1981)." },
+  wittig1980: { cita: "Wittig, M. (1980). On ne naît pas femme. Questions Féministes, 8, 75-84.", tipo: "obra", nota: "Recogido en castellano en El pensamiento heterosexual (Egales, 2005)." },
+  rubin1984: { cita: "Rubin, G. (1989). Reflexionando sobre el sexo: notas para una teoría radical de la sexualidad. En C. Vance (Comp.), Placer y peligro: explorando la sexualidad femenina (pp. 113-190). Revolución. (Obra original publicada en 1984)", tipo: "obra" },
+  bourdieuwacquant1995: { cita: "Bourdieu, P. y Wacquant, L. J. D. (1995). Respuestas: por una antropología reflexiva. Grijalbo.", tipo: "obra" },
+  favret1977: { cita: "Favret-Saada, J. (1977). Les mots, la mort, les sorts. Gallimard.", tipo: "obra" },
+  kulick1995: { cita: "Kulick, D. (1995). Introduction. En D. Kulick y M. Willson (Eds.), Taboo: Sex, identity and erotic subjectivity in anthropological fieldwork (pp. 1-28). Routledge.", tipo: "obra", nota: "M indica pp. 4-27." },
+  delvalle1985: { cita: "Valle, T. del, et al. (1985). Mujer vasca: imagen y realidad. Anthropos.", tipo: "obra" },
+  mendez1988: { cita: "Méndez, L. (1988). Cousas de mulleres: campesinas, poder y vida cotidiana (Lugo, 1940-1980). Anthropos.", tipo: "obra" },
+
+  /* ---------- Ampliación (no sustituye a los manuales) ---------- */
+  kandelpicq1982: { cita: "Kandel, L. y Picq, F. (1982). Le mythe des origines, à propos de la journée internationale des femmes. La Revue d'en face, 12.", tipo: "amplia", nota: "Investigación que no halló rastro documental de la supuesta manifestación neoyorquina del 8 de marzo de 1857; citada aquí por la nota de HC sobre Zetkin y el Día de la Mujer. Consultada a través de fuentes secundarias." },
+  shankman2009: { cita: "Shankman, P. (2009). The trashing of Margaret Mead: Anatomy of an anthropological controversy. University of Wisconsin Press.", tipo: "amplia", nota: "Para situar la controversia Freeman-Mead más allá de lo que recoge M." },
+  crenshaw1991: { cita: "Crenshaw, K. (1991). Mapping the margins: Intersectionality, identity politics, and violence against women of color. Stanford Law Review, 43(6), 1241-1299.", doi: "10.2307/1229039", tipo: "amplia", nota: "M no emplea el término «interseccionalidad», pero sí analiza las intersecciones entre sexo, clase, raza y práctica sexual (caps. 6-7)." }
+};
