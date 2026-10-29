@@ -117,7 +117,7 @@ window.ESTACIONES.push(
   cita: { texto: "No se nace mujer: se llega a serlo. Ningún destino biológico, psíquico, económico, define la figura que reviste en el seno de la sociedad la hembra humana.", fuente: "Beauvoir (1978 [1949], p. 285); en M, p. 89" },
   matices: [
     { t: "«Basta con cambiar los signos»", d: "En 1986 Lévi-Strauss afirmó que si las feministas prefieren decir que son las mujeres quienes intercambian hombres, «no altera la teoría» (M, p. 82). Méndez muestra por qué no es así: el sujeto del intercambio no puede ser a la vez su objeto (M, p. 87)." },
-    { t: "Traducciones de la frase de Beauvoir", d: "La sentencia circula con variantes («no se nace mujer: llega una a serlo»). En el examen, atribúyela con exactitud y sitúala en el volumen II." },
+    { t: "Traducciones de la frase de Beauvoir", d: "La sentencia circula con variantes («no se nace mujer: llega una a serlo»); cita la de M, p. 89, que da la página de su edición. Méndez la sitúa «mediado el primer volumen»; en el original francés abre el volumen II («La experiencia vivida»)." },
     { t: "Beauvoir no era antropóloga", d: "El segundo sexo es filosofía existencialista que usa datos etnográficos de forma selectiva (M, pp. 91-93); Méndez examina sus bases antropológicas, no la juzga como etnografía." }
   ],
   examen: [
@@ -280,7 +280,7 @@ window.ESTACIONES.push(
   matices: [
     { t: "Millett y Stolcke", d: "Méndez escribe «Millet» y fecha Sexual politics en 1969; la grafía es Millett y el libro se publicó en 1970. Escribe también «Stokke»: la autora es Verena Stolcke, que en 1974 firmó el original como Verena Martínez-Alier." },
     { t: "La «universalidad» es una cuestión empírica", d: "El debate de los setenta no se resuelve por definición: Ortner la asume como «hecho dado» (M, p. 145) y Rogers critica precisamente esa asunción (M, pp. 169-170)." },
-    { t: "Ortner revisó su tesis", d: "En «Entonces, ¿es la mujer al hombre lo que la naturaleza a la cultura?» (2001) Ortner revisa su artículo de los setenta (HC, p. 111, n. 185). Cita las dos fechas." }
+    { t: "Ortner revisó su tesis", d: "En «Entonces, ¿es la mujer al hombre lo que la naturaleza a la cultura?» (2001) Ortner revisa su artículo de los setenta (HC, p. 110). Cita las dos fechas; HC data el texto en 2001 y da su dirección en la revista AIBR (fecha no contrastada)." }
   ],
   examen: [
     { q: "Exponga la tesis de Ortner (1974) y las críticas que recibió.", claves: ["Estatus secundario universal como punto de partida (M, p. 145).", "«Más próxima» a la naturaleza: cuerpo, roles, psique (M, p. 146).", "Chodorow (M, pp. 147-149).", "Críticas: desliz naturalista; Rogers y la reificación de naturaleza/cultura (M, p. 170); autocrítica de 2001."] },

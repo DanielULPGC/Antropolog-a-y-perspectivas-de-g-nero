@@ -329,3 +329,7 @@ body.presentar .ficha h2 { font-size: 2.1rem; }
 .contador.exceso { color: var(--ko); }
 .chip { display: inline-block; font-family: var(--f-mono); font-size: var(--t-xs); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; margin: 0 4px 4px 0; color: var(--muted); }
 .aviso { background: var(--surface-2); border-radius: var(--r); padding: var(--s-3) var(--s-4); font-size: var(--t-sm); margin: var(--s-3) 0; }
+
+/* auditoría v1.1 */
+.tarjeta .pista { display: block; margin-top: .75rem; }
+.resultado-item:empty { display: none; }

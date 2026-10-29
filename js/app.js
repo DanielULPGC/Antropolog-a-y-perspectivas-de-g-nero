@@ -12,7 +12,7 @@ const NE = E.length;
 /* colores de los hilos (uno por estación), compartidos con la escena */
 export const HILOS = ["#a3333f", "#34508a", "#c48a1c", "#5d7a3a", "#7a4f8c", "#b8642c", "#2f7a78", "#b35a7a", "#8a6a3a", "#4a6f9e"];
 const BLOQUES = {
-  1: "Análisis del pensamiento ilustrado y orígenes de la construcción del sujeto moderno",
+  1: "Análisis del pensamiento ilustrado y los orígenes de la construcción del sujeto moderno",
   2: "Comienzos y desarrollo de la teoría feminista: siglos XIX y XX",
   3: "La antropología feminista: androcentrismo, etnocentrismo y crítica feminista",
   4: "Entramados teóricos y políticos de la antropología feminista"
@@ -324,7 +324,7 @@ function vistaSimulador() {
   ficha.innerHTML = "";
   ficha.append(h("p", { class: "etiqueta" }, "Herramienta"), h("h2", {}, "Simulador de la prueba presencial"),
     h("p", { class: "sub" }, "Tres preguntas cortas (2 puntos cada una) y un tema de desarrollo (4 puntos), sin material, con 120 minutos y una cara de folio por respuesta."),
-    h("div", { class: "aviso" }, "Una cara de folio manuscrita suele dar para unas 250-400 palabras, según la letra: el contador es solo orientativo. Formato según la guía del curso 2026/2027; compruébalo en la guía vigente."));
+    h("div", { class: "aviso" }, "Una cara de folio manuscrita suele dar para unas 250-400 palabras, según la letra: el contador es solo orientativo. Formato según la guía del curso 2025/2026; compruébalo en la guía vigente."));
   // reloj
   const reloj = h("span", { class: "reloj", "aria-live": "off" }, "120:00");
   const bReloj = h("button", { type: "button", class: "boton primario" }, sim.inicio ? "Reiniciar reloj" : "Empezar (120 min)");
@@ -400,7 +400,7 @@ function vistaBibliografia() {
     ficha.append(h("h3", {}, nombre), h("ul", { class: "refs" }, claves.map((k) => h("li", { html: refHTML(k) }))));
   });
   ficha.append(h("h3", {}, "Créditos y advertencias"),
-    h("p", {}, "Recurso de estudio para la asignatura Antropología y perspectivas de género (Grado en Antropología Social y Cultural, UNED), elaborado con asistencia de un modelo de inteligencia artificial (Claude, Anthropic) en la redacción y la programación. Los textos son síntesis propias; las citas literales son breves y llevan página. Las páginas se cotejaron con los ejemplares aportados el 29 de octubre de 2026; los avisos «Lee con cautela» señalan erratas y fechas que difieren de la historiografía habitual. Versión 1.0."),
+    h("p", {}, "Recurso de estudio para la asignatura Antropología y perspectivas de género (Grado en Antropología Social y Cultural, UNED), elaborado con asistencia de un modelo de inteligencia artificial (Claude, Anthropic) en la redacción y la programación. Los textos son síntesis propias; las citas literales son breves y llevan página. Las páginas se cotejaron con los ejemplares aportados el 29 de octubre de 2026; los avisos «Lee con cautela» señalan erratas y fechas que difieren de la historiografía habitual. Versión 1.1 (auditada el 29 de octubre de 2026)."),
     h("p", {}, "Requiere revisión docente antes de su uso con alumnado. DOI incluidos solo cuando se han contrastado en la página del editor o en la lista verificada de la asignatura; el resto se cita sin DOI, como admite APA 7.ª. Escena 3D modelada por código con Three.js 0.160.0 (licencia MIT). Tipografías Fraunces, Atkinson Hyperlegible y JetBrains Mono (SIL Open Font License)."));
   irArriba();
 }
@@ -502,7 +502,7 @@ function vistaGuiaEstudio() {
     h("p", { class: "nota-pie" }, "Los productos propios importan más que las horas: un esquema construido se recuerda; un subrayado, no. Si hay que recortar, recorta lectura complementaria, nunca los simulacros."));
 
   ficha.append(h("h3", { id: "g-mapa" }, "Mapa de la asignatura"), h("div", { class: "mapa-caja", html: mapaSVG() }),
-    h("p", { class: "nota-pie" }, "Correspondencia propuesta por este recurso entre los cuatro bloques del programa y los capítulos de los manuales. Pulsa una caja para ir a su estación."));
+    h("p", { class: "nota-pie" }, "Correspondencia propuesta por este recurso entre los cuatro bloques del programa y los capítulos de los manuales. La guía de 2025/2026 agrupa los capítulos 1-3 de Hernández Corrochano bajo el pensamiento ilustrado y el sujeto moderno, y los capítulos 4-5 como puente hacia Méndez; aquí el capítulo 3 (siglo XIX) se sitúa en el bloque 2 por su cronología. Pulsa una caja para ir a su estación."));
 
   const tb = h("div", { id: "g-tablas" }, h("h3", {}, "Cuadros comparativos"));
   (GU.tablas || []).forEach((t) => tb.append(tabla(t)));

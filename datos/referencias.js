@@ -18,9 +18,10 @@ window.REFERENCIAS = {
     nota: "Lectura obligatoria: capítulos 3-7 (pp. 55-232). Las páginas citadas («M, p.») siguen la paginación impresa del ejemplar aportado, cuyo depósito legal es de 2008 (M. 36.692-2008); compruébese si la paginación coincide con la edición propia."
   },
   guia2627: {
-    cita: "Universidad Nacional de Educación a Distancia. (2026). Guía de la asignatura Antropología y perspectivas de género (70023095). Curso 2026/2027. Grado en Antropología Social y Cultural.",
+    cita: "Universidad Nacional de Educación a Distancia. (2025). Guía de la asignatura Antropología y perspectivas de género (70023095). Curso 2025/2026. Grado en Antropología Social y Cultural.",
+    url: "https://www.dykinson.com/media/pdf/70023095_2026.pdf",
     tipo: "base",
-    nota: "Fechas, ponderaciones y formato de la prueba cambian de curso en curso: prevalece siempre la guía vigente y el curso virtual."
+    nota: "Copia pública consultada el 29-10-2026. Fechas, ponderaciones y formato de la prueba pueden cambiar de curso en curso: prevalece siempre la guía vigente y el curso virtual."
   },
 
   /* ---------- Obras citadas por Hernández Corrochano (caps. 1-5) ---------- */

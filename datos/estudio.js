@@ -367,7 +367,7 @@ window.GUIA = {
     ["1990", "Judith Butler", "El género en disputa.", "e10"]
   ],
   formato: {
-    nota: "Datos de la guía pública del curso 2026/2027 (consultada en agosto de 2026). Compruébalos en la guía vigente y en el curso virtual: prevalecen siempre sobre este recurso.",
+    nota: "Cotejado con la guía pública del curso 2025/2026 (consultada el 29 de octubre de 2026). Comprueba la del curso vigente y el curso virtual: prevalecen siempre sobre este recurso.",
     puntos: [
       "Prueba presencial: 90 % de la nota; 120 minutos; sin material.",
       "Primera parte: tres preguntas cortas obligatorias, 2 puntos cada una, sobre los dos libros; máximo una cara de folio cada una.",
