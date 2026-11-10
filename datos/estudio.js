@@ -1,7 +1,7 @@
 /*
  * Entramados · capa de estudio
  * ESTUDIO[id]: ideas clave, errores frecuentes y pregunta de desarrollo con guion (formato de la prueba presencial:
- * una cara de folio). GUIA: plan, cuadros comparativos, cronología y formato de la prueba.
+ * la extensión que fija la guía). GUIA: plan, cuadros comparativos, cronología y formato de la prueba.
  */
 window.ESTUDIO = {
   e1: {
@@ -367,12 +367,13 @@ window.GUIA = {
     ["1990", "Judith Butler", "El género en disputa.", "e10"]
   ],
   formato: {
-    nota: "Cotejado con la guía pública del curso 2025/2026 (consultada el 29 de octubre de 2026). Comprueba la del curso vigente y el curso virtual: prevalecen siempre sobre este recurso.",
+    nota: "Cotejado con la guía de estudio pública del curso 2026/2027 (copia aportada el 9 de noviembre de 2026). La guía y el curso virtual prevalecen siempre sobre este recurso.",
     puntos: [
       "Prueba presencial: 90 % de la nota; 120 minutos; sin material.",
-      "Primera parte: tres preguntas cortas obligatorias, 2 puntos cada una, sobre los dos libros; máximo una cara de folio cada una.",
-      "Segunda parte: un tema de desarrollo, 4 puntos, máximo una cara de folio; se valoran tesis, autoras y autores y categorías relacionadas.",
-      "PEC voluntaria: hasta 1 punto; lectura de un artículo y ejercicio breve en la plataforma; una cara de folio; solo cuenta si se aprueba la prueba presencial. Se penaliza el «corta y pega».",
+      "Primera parte: tres preguntas cortas obligatorias, 2 puntos cada una, sobre los dos libros; las tres juntas no pueden superar una cara de folio. Se valora el conocimiento concreto de lo preguntado.",
+      "Segunda parte: un tema de desarrollo, 4 puntos, máximo una cara de folio; se valora un conocimiento correcto de las tesis, autoras y autores y categorías relacionadas.",
+      "PEC voluntaria y muy recomendable: lectura de un texto seleccionado por el equipo docente y un breve ejercicio sobre él y sobre los manuales. La corrigen los tutores virtuales; vale hasta 1 punto, que se suma solo si se aprueba la prueba presencial (nota mínima 5), en convocatoria ordinaria y extraordinaria. Entrega aproximada: 11 de enero de 2027. El texto y las preguntas se publican en el curso virtual el primer día del plazo.",
+      "Matrícula de honor: posible con un 10 en la prueba y la PEC realizada correctamente, según el número de matrículas disponibles.",
       "Reparto de tiempo sugerido: 5 minutos de lectura, unos 20 por pregunta corta, 45 para el tema y 10 de revisión."
     ]
   },
@@ -381,7 +382,7 @@ window.GUIA = {
     ["Semanas 4-5", "HC, caps. 4-5 (estaciones 4-5)", "Glosario propio de 12-15 términos"],
     ["Semanas 6-8", "M, caps. 3-5 (estaciones 6-8)", "Fichas de autoras: tesis, obra, crítica recibida"],
     ["Semanas 9-10", "M, caps. 6-7 (estaciones 9-10)", "Mapa de debates con las posiciones enfrentadas"],
-    ["Semana 11", "PEC", "Borrador y recorte a una cara de folio"],
+    ["Semana 11", "PEC", "Borrador propio que relacione el texto con los manuales"],
     ["Semana 12", "Repaso", "Simulacros cronometrados en el Simulador"]
   ]
 };

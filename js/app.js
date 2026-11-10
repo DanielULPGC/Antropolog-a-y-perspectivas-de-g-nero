@@ -49,7 +49,7 @@ function refHTML(clave) {
   let s = r.cita;
   if (r.doi) s += ` <a href="https://doi.org/${r.doi}" target="_blank" rel="noopener">https://doi.org/${r.doi}</a>`;
   else if (r.url) s += ` <a href="${r.url}" target="_blank" rel="noopener">${r.url}</a>`;
-  if (r.nota) s += `<span class="nota">${r.nota}</span>`;
+  if (r.nota) s += ` <span class="nota">${r.nota}</span>`;
   return s;
 }
 const contarPalabras = (t) => (t.trim().match(/\S+/g) || []).length;
@@ -105,6 +105,14 @@ function vistaInicio() {
       h("button", { type: "button", class: "boton primario", onclick: () => navegar("e1") }, "Empezar por la estación 1"),
       h("button", { type: "button", class: "boton", onclick: () => navegar("estudio") }, "Guía de estudio"),
       h("button", { type: "button", class: "boton", onclick: () => navegar("simulador") }, "Simulador de la prueba")),
+    (() => { const n = pendientesHoy(); return n ? h("p", { class: "fb bien", role: "status" }, `Hoy te tocan ${n} tarjetas de repaso. `, h("button", { type: "button", class: "enlace", onclick: () => navegar("tarjetas") }, "Repasarlas")) : null; })(),
+    h("h3", {}, "Herramientas para estudiar"),
+    h("ul", { class: "lista-plana" },
+      h("li", {}, h("button", { type: "button", class: "enlace", onclick: () => navegar("conceptos") }, "Red de conceptos"), ": cada concepto, contra qué se formuló y con qué se relaciona."),
+      h("li", {}, h("button", { type: "button", class: "enlace", onclick: () => navegar("casos") }, "Atlas de casos"), ": trece casos etnográficos con su lección y su cautela."),
+      h("li", {}, h("button", { type: "button", class: "enlace", onclick: () => navegar("corrientes") }, "Comparador de corrientes"), ": origen de la subordinación, conceptos y críticas, lado a lado."),
+      h("li", {}, h("button", { type: "button", class: "enlace", onclick: () => navegar("lectura") }, "Lectura crítica (PEC)"),  ": una pauta para analizar el texto de la PEC con tus palabras."),
+      h("li", {}, h("button", { type: "button", class: "enlace", onclick: () => navegar("simulador") }, "Simulador"), ": ahora con rúbrica de autocorrección e historial de notas.")),
     h("h3", {}, "Estaciones"),
     h("div", { class: "grupo-herr" }, E.map((est, i) => h("button", { type: "button", class: "boton ancho", onclick: () => navegar(est.id) },
       h("span", { class: "muestra", style: `background:${HILOS[i]};width:10px;height:10px;border-radius:2px;display:inline-block`, "aria-hidden": "true" }),
@@ -183,7 +191,7 @@ function vistaEstacion(i, pestana) {
     pE.append(h("h3", {}, "Errores frecuentes"));
     st.errores.forEach((x) => pE.append(h("div", { class: "matiz" }, x)));
     pE.append(h("h3", {}, "Tema de desarrollo"), h("p", { class: "lema" }, st.desarrollo.q),
-      h("p", { class: "nota-pie" }, "Formato de la prueba: una cara de folio. Escribe sin mirar y compara después con el guion."));
+      h("p", { class: "nota-pie" }, "En la prueba, el tema de desarrollo no puede superar una cara de folio. Escribe sin mirar y compara después con el guion."));
     const idR = `resp-${est.id}`;
     const ta = h("textarea", { id: idR, rows: "8", class: "area", placeholder: "Redacta aquí tu respuesta antes de ver el guion." });
     const cnt = h("span", { class: "contador", "aria-live": "polite" });
@@ -227,7 +235,7 @@ function vistaEstacion(i, pestana) {
   // al examen
   const pX = panel("examen");
   pX.append(h("h3", {}, "Posibles preguntas cortas"),
-    h("p", { class: "nota-pie" }, "Cada pregunta corta vale 2 puntos y se responde en una cara de folio. Intenta enumerar los elementos antes de desplegarlos: definición con autora, contra qué se formula, un caso y la consecuencia analítica."));
+    h("p", { class: "nota-pie" }, "Cada pregunta corta vale 2 puntos, y las tres juntas no pueden superar una cara de folio: unas pocas frases precisas por pregunta. Intenta enumerar los elementos antes de desplegarlos: definición con autora, contra qué se formula, un caso y la consecuencia analítica."));
   est.examen.forEach((p) => pX.append(h("div", { class: "corta" }, h("p", {}, p.q),
     h("details", {}, h("summary", {}, "Elementos que debería contener"), h("ul", { class: "lista-plana" }, p.claves.map((c) => h("li", {}, c)))))));
   pX.append(h("h3", {}, "Conecta con otras estaciones"));
@@ -323,8 +331,8 @@ function vistaSimulador() {
   clearInterval(relojSim);
   ficha.innerHTML = "";
   ficha.append(h("p", { class: "etiqueta" }, "Herramienta"), h("h2", {}, "Simulador de la prueba presencial"),
-    h("p", { class: "sub" }, "Tres preguntas cortas (2 puntos cada una) y un tema de desarrollo (4 puntos), sin material, con 120 minutos y una cara de folio por respuesta."),
-    h("div", { class: "aviso" }, "Una cara de folio manuscrita suele dar para unas 250-400 palabras, según la letra: el contador es solo orientativo. Formato según la guía del curso 2025/2026; compruébalo en la guía vigente."));
+    h("p", { class: "sub" }, "Tres preguntas cortas (2 puntos cada una) que en conjunto no pueden superar una cara de folio, y un tema de desarrollo (4 puntos) en otra cara como máximo. Sin material y con 120 minutos."),
+    h("div", { class: "aviso" }, "Una cara de folio manuscrita suele dar para unas 250-400 palabras, según la letra: para las tres preguntas cortas juntas eso supone unas 80-130 palabras por respuesta. Los contadores son solo orientativos. Formato según la guía del curso 2026/2027."));
   // reloj
   const reloj = h("span", { class: "reloj", "aria-live": "off" }, "120:00");
   const bReloj = h("button", { type: "button", class: "boton primario" }, sim.inicio ? "Reiniciar reloj" : "Empezar (120 min)");
@@ -345,13 +353,21 @@ function vistaSimulador() {
     const id = `sim-${n}`;
     const ta = h("textarea", { id, rows: n === 3 ? "14" : "9", class: "area", placeholder: "Escribe sin consultar el manual." });
     const cnt = h("span", { class: "contador", "aria-live": "polite" });
-    const act = () => { const w = contarPalabras(ta.value); cnt.textContent = `${w} palabras`; cnt.classList.toggle("exceso", w > 420); };
+    const act = () => {
+      const w = contarPalabras(ta.value);
+      cnt.textContent = n === 3 ? `${w} palabras (una cara de folio: unas 250-400)` : `${w} palabras (orientación: 80-130 por pregunta corta)`;
+      cnt.classList.toggle("exceso", n === 3 ? w > 420 : w > 140);
+      if (n < 3 && parte1) { const t = [0, 1, 2].reduce((acc, i) => acc + contarPalabras(sim.resp[i] || ""), 0); parte1.textContent = `Primera parte: ${t} palabras en total. Las tres respuestas deben caber en una cara de folio.`; parte1.classList.toggle("exceso", t > 420); }
+    };
     ta.value = sim.resp[n] || ""; act();
     ta.addEventListener("input", () => { sim.resp[n] = ta.value; act(); guardarPronto(); });
     return h("section", { class: "sim-preg" }, h("h3", {}, titulo), h("p", { class: "lema" }, enunciado), extra || null,
       h("div", { class: "campo" }, h("label", { for: id }, "Respuesta"), ta, cnt));
   };
+  const parte1 = h("p", { class: "contador", "aria-live": "polite" });
   sim.cortas.forEach((c, k) => ficha.append(bloque(k, `Pregunta corta ${k + 1} · 2 puntos`, c.q, h("p", { class: "nota-pie" }, "Procede de ", botonEst(c.est), "."))));
+  ficha.append(parte1);
+  { const t = [0, 1, 2].reduce((acc, i) => acc + contarPalabras(sim.resp[i] || ""), 0); parte1.textContent = `Primera parte: ${t} palabras en total. Las tres respuestas deben caber en una cara de folio.`; }
   ficha.append(bloque(3, "Tema de desarrollo · 4 puntos", tema.q, h("p", { class: "nota-pie" }, "Estaciones relacionadas: ", tema.est.map((id, i) => [i ? ", " : "", botonEst(id, `${estPorId(id).num}`)]))));
 
   // corrección
@@ -360,19 +376,60 @@ function vistaSimulador() {
   bCorr.addEventListener("click", () => {
     clearInterval(relojSim);
     corr.innerHTML = "";
-    corr.append(h("h3", {}, "Criterios de autocorrección"),
-      h("p", { class: "nota-pie" }, "Contrasta cada respuesta con estos elementos. En las cortas se valora el conocimiento concreto de lo preguntado; en el tema, aportar tesis, autoras y autores y categorías relacionadas."));
-    sim.cortas.forEach((c, k) => corr.append(h("div", { class: "corta" }, h("p", {}, h("strong", {}, `Pregunta corta ${k + 1}. `), c.q), h("ul", { class: "lista-plana" }, claveCorta(c.q).map((x) => h("li", {}, x))),
-      h("p", { class: "contador" }, `Tu respuesta: ${contarPalabras(sim.resp[k] || "")} palabras`))));
-    corr.append(h("div", { class: "corta" }, h("p", {}, h("strong", {}, "Tema de desarrollo. "), tema.q), h("ol", { class: "lista-plana" }, tema.guion.map((x) => h("li", {}, x))),
-      h("p", { class: "contador" }, `Tu respuesta: ${contarPalabras(sim.resp[3] || "")} palabras`)));
+    corr.append(h("h3", {}, "Autocorrección con rúbrica"),
+      h("p", { class: "nota-pie" }, "Marca solo los elementos que tu respuesta desarrolla con precisión, no los que menciona de pasada. La nota es orientativa: la corrección real valora también la redacción, el uso preciso de las categorías y el ajuste a una cara de folio."));
+    const marcas = [];
+    const total = h("p", { class: "idea", "aria-live": "polite" });
+    const recalcula = () => {
+      let suma = 0;
+      marcas.forEach((m) => { const n = m.cajas.filter((c) => c.checked).length; m.nota = m.cajas.length ? Math.round((n / m.cajas.length) * m.max * 10) / 10 : 0; m.salida.textContent = `${m.nota.toLocaleString("es")} de ${m.max} puntos`; suma += m.nota; });
+      total.textContent = `Nota orientativa: ${(Math.round(suma * 10) / 10).toLocaleString("es")} sobre 10`;
+      return Math.round(suma * 10) / 10;
+    };
+    const bloqueRubrica = (k, titulo, enunciado, items, max, ordenada) => {
+      const cajas = items.map((x, j) => h("input", { type: "checkbox", id: `rub-${k}-${j}` }));
+      const salida = h("span", { class: "contador" });
+      cajas.forEach((c) => c.addEventListener("change", recalcula));
+      const lista = h(ordenada ? "ol" : "ul", { class: "lista-plana rubrica" }, items.map((x, j) => h("li", {}, h("label", { for: `rub-${k}-${j}`, class: "casilla" }, cajas[j], x))));
+      marcas.push({ cajas, salida, max, nota: 0 });
+      return h("div", { class: "corta" }, h("p", {}, h("strong", {}, titulo), enunciado), lista,
+        h("p", { class: "contador" }, `Tu respuesta: ${contarPalabras(sim.resp[k] || "")} palabras · `, salida));
+    };
+    sim.cortas.forEach((c, k) => corr.append(bloqueRubrica(k, `Pregunta corta ${k + 1}. `, c.q, claveCorta(c.q), 2, false)));
+    corr.append(bloqueRubrica(3, "Tema de desarrollo. ", tema.q, tema.guion, 4, true));
+    recalcula();
+    const avisoH = h("span", { class: "nota-pie", role: "status" });
+    const bGuardar = h("button", { type: "button", class: "boton primario" }, "Guardar en mi historial");
+    bGuardar.addEventListener("click", () => {
+      const nota = recalcula();
+      estado.historialSim = (estado.historialSim || []).concat([{ fecha: new Date().toISOString().slice(0, 10), nota, desglose: marcas.map((m) => m.nota), tema: tema.id, palabras: [0, 1, 2, 3].map((i) => contarPalabras(sim.resp[i] || "")) }]).slice(-20);
+      guardar(); avisoH.textContent = "Guardado. Consulta la evolución en el historial, al final de esta página."; pintaHistorial();
+    });
+    corr.append(total, h("div", { class: "reto-acciones" }, bGuardar, avisoH));
     const txt = [`SIMULACRO · ENTRAMADOS`, ""].concat(sim.cortas.map((c, k) => `PREGUNTA CORTA ${k + 1}: ${c.q}\n${sim.resp[k] || "(sin responder)"}\n`), [`TEMA: ${tema.q}\n${sim.resp[3] || "(sin responder)"}`]).join("\n");
-    const salida = h("pre", { class: "salida", tabindex: "0", "aria-label": "Respuestas del simulacro" }, txt);
+    const salida = h("pre", { class: "salida", tabindex: "0", role: "region", "aria-label": "Respuestas del simulacro" }, txt);
     const aviso = h("span", { class: "nota-pie", role: "status" });
     corr.append(h("div", { class: "reto-acciones" }, h("button", { type: "button", class: "boton", onclick: () => copiarTexto(txt, salida, aviso) }, "Copiar mis respuestas"), aviso), salida);
     corr.scrollIntoView({ behavior: "smooth", block: "start" });
   });
-  ficha.append(h("div", { class: "reto-acciones" }, bCorr), corr);
+  const hist = h("section", { "aria-labelledby": "t-hist" });
+  function pintaHistorial() {
+    const H = estado.historialSim || [];
+    hist.innerHTML = "";
+    hist.append(h("h3", { id: "t-hist" }, "Historial de simulacros"));
+    if (!H.length) { hist.append(h("p", { class: "nota-pie" }, "Aún no has guardado ningún simulacro. Al terminar uno, marca la rúbrica y pulsa «Guardar en mi historial».")); return; }
+    hist.append(tabla({ titulo: "Simulacros guardados en este navegador (nota orientativa)", cab: ["Fecha", "Cortas (2 + 2 + 2)", "Tema (4)", "Total (10)"],
+      filas: H.slice().reverse().map((r) => [r.fecha.split("-").reverse().join("/"), r.desglose.slice(0, 3).map((x) => x.toLocaleString("es")).join(" + "), r.desglose[3].toLocaleString("es"), r.nota.toLocaleString("es")]) }));
+    if (H.length > 1) { const d = Math.round((H[H.length - 1].nota - H[0].nota) * 10) / 10; hist.append(h("p", { class: "nota-pie" }, `Del primer al último simulacro: ${d >= 0 ? "+" : ""}${d.toLocaleString("es")} puntos.`)); }
+    const bBorrar = h("button", { type: "button", class: "boton" }, "Borrar historial");
+    bBorrar.addEventListener("click", () => {
+      if (bBorrar.dataset.confirmar) { estado.historialSim = []; guardar(); pintaHistorial(); return; }
+      bBorrar.dataset.confirmar = "1"; bBorrar.textContent = "Pulsa otra vez para borrar";
+    });
+    hist.append(h("div", { class: "reto-acciones" }, bBorrar));
+  }
+  ficha.append(h("div", { class: "reto-acciones" }, bCorr), corr, hist);
+  pintaHistorial();
   irArriba();
 }
 
@@ -400,7 +457,7 @@ function vistaBibliografia() {
     ficha.append(h("h3", {}, nombre), h("ul", { class: "refs" }, claves.map((k) => h("li", { html: refHTML(k) }))));
   });
   ficha.append(h("h3", {}, "Créditos y advertencias"),
-    h("p", {}, "Recurso de estudio para la asignatura Antropología y perspectivas de género (Grado en Antropología Social y Cultural, UNED), elaborado con asistencia de un modelo de inteligencia artificial (Claude, Anthropic) en la redacción y la programación. Los textos son síntesis propias; las citas literales son breves y llevan página. Las páginas se cotejaron con los ejemplares aportados el 29 de octubre de 2026; los avisos «Lee con cautela» señalan erratas y fechas que difieren de la historiografía habitual. Versión 1.1 (auditada el 29 de octubre de 2026)."),
+    h("p", {}, "Recurso de estudio para la asignatura Antropología y perspectivas de género (Grado en Antropología Social y Cultural, UNED), elaborado con asistencia de un modelo de inteligencia artificial (Claude, Anthropic) en la redacción y la programación. Los textos son síntesis propias; las citas literales son breves y llevan página. Las páginas se cotejaron con los ejemplares aportados el 29 de octubre de 2026; los avisos «Lee con cautela» señalan erratas y fechas que difieren de la historiografía habitual. Versión 1.4 (9 de noviembre de 2026): bibliografía conforme a APA 7, cotejo de paráfrasis y nuevas herramientas de estudio."),
     h("p", {}, "Requiere revisión docente antes de su uso con alumnado. DOI incluidos solo cuando se han contrastado en la página del editor o en la lista verificada de la asignatura; el resto se cita sin DOI, como admite APA 7.ª. Escena 3D modelada por código con Three.js 0.160.0 (licencia MIT). Tipografías Fraunces, Atkinson Hyperlegible y JetBrains Mono (SIL Open Font License)."));
   irArriba();
 }
@@ -414,13 +471,13 @@ function vistaGuia() {
       h("li", {}, "Recorre las estaciones en orden: primero el marco de teoría feminista (1-5) y después la antropología feminista (6-10)."),
       h("li", {}, "Responde a la predicción antes de leer y vuelve a ella al terminar."),
       h("li", {}, "En «Estudiar» redacta el tema de desarrollo antes de abrir el guion; en «Al examen», enumera los elementos de cada pregunta corta antes de desplegarlos."),
-      h("li", {}, "Usa las tarjetas para fijar conceptos y el Simulador, con reloj, para entrenar la síntesis en una cara de folio."),
+      h("li", {}, "Usa las tarjetas para fijar conceptos y el Simulador, con reloj, para entrenar la síntesis: una cara de folio para las tres preguntas cortas y otra para el tema."),
       h("li", {}, "Tu progreso se guarda solo en este navegador; la Guía de estudio permite copiar tus apuntes.")),
     h("h3", {}, "Para tutoría"),
     h("ul", { class: "lista-plana" },
       h("li", {}, "«Presentar» oculta el índice y amplía la ficha para proyectar."),
       h("li", {}, "El modo docente muestra notas de tutoría, preguntas de debate y botones de solución. Se activa con el ancla #docente o con el botón de abajo y dura mientras la pestaña siga abierta."),
-      h("li", {}, "Anclas directas: #e1 a #e10, #estudio, #tarjetas, #simulador, #examen, #glosario, #bibliografia.")),
+      h("li", {}, "Anclas directas: #e1 a #e10, #estudio, #tarjetas, #simulador, #examen, #glosario, #bibliografia, #conceptos, #casos, #corrientes, #lectura.")),
     h("div", { class: "reto-acciones" },
       h("button", { type: "button", class: "boton" + (docente ? " activo" : ""), "aria-pressed": docente ? "true" : "false", onclick: () => { ponerDocente(!docente); vistaGuia(); } }, docente ? "Desactivar modo docente" : "Activar modo docente")),
     h("h3", {}, "Accesibilidad"),
@@ -502,7 +559,7 @@ function vistaGuiaEstudio() {
     h("p", { class: "nota-pie" }, "Los productos propios importan más que las horas: un esquema construido se recuerda; un subrayado, no. Si hay que recortar, recorta lectura complementaria, nunca los simulacros."));
 
   ficha.append(h("h3", { id: "g-mapa" }, "Mapa de la asignatura"), h("div", { class: "mapa-caja", html: mapaSVG() }),
-    h("p", { class: "nota-pie" }, "Correspondencia propuesta por este recurso entre los cuatro bloques del programa y los capítulos de los manuales. La guía de 2025/2026 agrupa los capítulos 1-3 de Hernández Corrochano bajo el pensamiento ilustrado y el sujeto moderno, y los capítulos 4-5 como puente hacia Méndez; aquí el capítulo 3 (siglo XIX) se sitúa en el bloque 2 por su cronología. Pulsa una caja para ir a su estación."));
+    h("p", { class: "nota-pie" }, "Correspondencia propuesta por este recurso entre los cuatro bloques del programa y los capítulos de los manuales. La guía (cursos 2025/2026 y 2026/2027) agrupa los capítulos 1-3 de Hernández Corrochano bajo el pensamiento ilustrado y el sujeto moderno, y los capítulos 4-5 como puente hacia Méndez; aquí el capítulo 3 (siglo XIX) se sitúa en el bloque 2 por su cronología. Pulsa una caja para ir a su estación."));
 
   const tb = h("div", { id: "g-tablas" }, h("h3", {}, "Cuadros comparativos"));
   (GU.tablas || []).forEach((t) => tb.append(tabla(t)));
@@ -516,7 +573,7 @@ function vistaGuiaEstudio() {
   ficha.append(h("h3", { id: "g-progreso" }, "Mi progreso y apuntes"));
   ficha.append(tabla({ titulo: "Estado de cada estación en este navegador", cab: ["Estación", "Retos", "Repasada", "Apuntes", "Desarrollo"],
     filas: E.map((e) => [`${e.num}. ${e.titulo}`, `${hechosDe(e)}/${e.retos.length}`, estado.repasadas[e.id] ? "Sí" : "No", estado.apuntes[e.id] ? "Sí" : "—", estado.respuestas[e.id] ? "Redactado" : "—"]) }));
-  const salida = h("pre", { class: "salida", tabindex: "0", "aria-label": "Apuntes reunidos" }, textoApuntes());
+  const salida = h("pre", { class: "salida", tabindex: "0", role: "region", "aria-label": "Apuntes reunidos" }, textoApuntes());
   const aviso = h("span", { class: "nota-pie", role: "status" });
   ficha.append(h("p", {}, "Reúne en un solo texto las ideas clave, tus apuntes y tus temas de desarrollo para pegarlos en tu documento de estudio."),
     h("div", { class: "reto-acciones" }, h("button", { type: "button", class: "boton primario", onclick: () => copiarTexto(salida.textContent, salida, aviso) }, "Copiar mis apuntes"), aviso), salida);
@@ -531,14 +588,30 @@ function mazo() {
   G.forEach((g) => add(g.t, g.d, g.e));
   return cartas;
 }
+const DIAS = { 1: 1, 2: 3, 3: 7 };
+const hoyISO = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+const sumarDias = (n) => { const d = new Date(); d.setDate(d.getDate() + n); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+function repasoDe(t) {
+  const r = (estado.repaso || {})[t];
+  if (r) return r;
+  const viejo = (estado.cajas || {})[t]; // versiones anteriores: solo número de caja
+  return { caja: viejo || 1, prox: viejo ? hoyISO() : null };
+}
+const tocaHoy = (t) => { const r = repasoDe(t); return !r.prox || r.prox <= hoyISO(); };
+function pendientesHoy() { return mazo().filter((c) => tocaHoy(c.t) && (estado.repaso || {})[c.t]).length; }
 function vistaTarjetas() {
   const cartas = mazo();
-  const caja = (c) => estado.cajas[c.t] || 1;
-  let filtro = "todas", actual = null, girada = false;
+  estado.repaso = estado.repaso || {};
+  const caja = (c) => repasoDe(c.t).caja;
+  const nHoy = cartas.filter((c) => estado.repaso[c.t] && tocaHoy(c.t)).length;
+  let filtro = nHoy ? "hoy" : "todas", actual = null, girada = false;
   ficha.innerHTML = "";
   ficha.append(h("p", { class: "etiqueta" }, "Estudio"), h("h2", {}, "Tarjetas de repaso"),
-    h("p", { class: "sub" }, `${cartas.length} conceptos. Define el término en voz alta, con su autora, antes de girar la tarjeta. «La sé» la sube de caja; «Repasar» la devuelve a la caja 1.`));
-  const sel = h("select", { id: "t-filtro" }, h("option", { value: "todas" }, "Todas las estaciones"), E.map((e) => h("option", { value: e.id }, `Estación ${e.num}: ${e.titulo}`)), h("option", { value: "pendientes" }, "Solo las de la caja 1"));
+    h("p", { class: "sub" }, `${cartas.length} conceptos. Define el término en voz alta, con su autora, antes de girar la tarjeta. «La sé» la sube de caja y aplaza su repaso (caja 1: mañana; caja 2: en 3 días; caja 3: en 7 días). «Repasar» la devuelve a la caja 1.`));
+  const sel = h("select", { id: "t-filtro" },
+    h("option", { value: "hoy" }, "Las que tocan hoy"), h("option", { value: "todas" }, "Todas las estaciones"),
+    E.map((e) => h("option", { value: e.id }, `Estación ${e.num}: ${e.titulo}`)), h("option", { value: "pendientes" }, "Solo las de la caja 1"));
+  sel.value = filtro;
   sel.addEventListener("change", () => { filtro = sel.value; siguiente(); });
   const cont = h("div", { class: "cajas mono", "aria-live": "polite" });
   const tarjeta = h("button", { type: "button", class: "tarjeta", "aria-pressed": "false" });
@@ -547,14 +620,27 @@ function vistaTarjetas() {
   const bRep = h("button", { type: "button", class: "boton" }, "Repasar");
   const bSig = h("button", { type: "button", class: "boton" }, "Siguiente");
   const bReinicio = h("button", { type: "button", class: "boton" }, "Reiniciar cajas");
-  bSe.addEventListener("click", () => { if (!actual) return; estado.cajas[actual.t] = Math.min(3, caja(actual) + 1); guardar(); siguiente(); });
-  bRep.addEventListener("click", () => { if (!actual) return; estado.cajas[actual.t] = 1; guardar(); siguiente(); });
+  bSe.addEventListener("click", () => { if (!actual) return; const n = Math.min(3, caja(actual) + 1); estado.repaso[actual.t] = { caja: n, prox: sumarDias(DIAS[n]) }; guardar(); siguiente(); });
+  bRep.addEventListener("click", () => { if (!actual) return; estado.repaso[actual.t] = { caja: 1, prox: hoyISO() }; guardar(); siguiente(); });
   bSig.addEventListener("click", siguiente);
-  bReinicio.addEventListener("click", () => { estado.cajas = {}; guardar(); siguiente(); });
+  bReinicio.addEventListener("click", () => {
+    if (!bReinicio.dataset.confirmar) { bReinicio.dataset.confirmar = "1"; bReinicio.textContent = "Pulsa otra vez para reiniciar"; return; }
+    estado.repaso = {}; estado.cajas = {}; guardar(); bReinicio.textContent = "Reiniciar cajas"; delete bReinicio.dataset.confirmar; siguiente();
+  });
   ficha.append(h("div", { class: "campo" }, h("label", { for: "t-filtro" }, "Qué repasar"), sel), cont, tarjeta,
-    h("div", { class: "reto-acciones" }, bSe, bRep, bSig), h("div", { class: "reto-acciones" }, bReinicio));
-  const lista = () => cartas.filter((c) => filtro === "todas" || (filtro === "pendientes" ? caja(c) === 1 : c.e === filtro));
-  function contar() { const l = lista(), n = [1, 2, 3].map((k) => l.filter((c) => caja(c) === k).length); cont.textContent = `Caja 1: ${n[0]} · Caja 2: ${n[1]} · Caja 3: ${n[2]}`; }
+    h("div", { class: "reto-acciones" }, bSe, bRep, bSig), h("div", { class: "reto-acciones" }, bReinicio),
+    h("p", { class: "nota-pie" }, "Las fechas se guardan solo en este navegador. Las tarjetas que nunca has repasado no tienen fecha: aparecen en «Todas las estaciones»."));
+  const lista = () => cartas.filter((c) => {
+    if (filtro === "hoy") return estado.repaso[c.t] && tocaHoy(c.t);
+    if (filtro === "todas") return true;
+    if (filtro === "pendientes") return caja(c) === 1;
+    return c.e === filtro;
+  });
+  function contar() {
+    const l = lista(), n = [1, 2, 3].map((k) => l.filter((c) => caja(c) === k).length);
+    const hoy = cartas.filter((c) => estado.repaso[c.t] && tocaHoy(c.t)).length;
+    cont.textContent = `Caja 1: ${n[0]} · Caja 2: ${n[1]} · Caja 3: ${n[2]} · Tocan hoy: ${hoy}`;
+  }
   function siguiente() {
     const l = lista(); girada = false;
     if (!l.length) { actual = null; pintar(); return; }
@@ -567,15 +653,162 @@ function vistaTarjetas() {
   function pintar() {
     contar();
     tarjeta.innerHTML = "";
-    if (!actual) { tarjeta.append(h("span", { class: "frente" }, "No quedan tarjetas con este filtro.")); return; }
-    const e = estPorId(actual.e);
+    if (!actual) { tarjeta.append(h("span", { class: "frente" }, filtro === "hoy" ? "Hoy no te toca ninguna tarjeta. Elige otra opción para seguir practicando." : "No quedan tarjetas con este filtro.")); return; }
+    const e = estPorId(actual.e), r = repasoDe(actual.t);
     tarjeta.setAttribute("aria-pressed", girada ? "true" : "false");
     tarjeta.setAttribute("aria-label", girada ? `${actual.t}: ${actual.d}` : `${actual.t}. Pulsa para ver la definición`);
-    tarjeta.append(h("span", { class: "etiqueta" }, `Estación ${e.num} · caja ${caja(actual)}`),
+    tarjeta.append(h("span", { class: "etiqueta" }, `Estación ${e.num} · caja ${r.caja}${r.prox ? " · repaso: " + r.prox.split("-").reverse().join("/") : ""}`),
       h("span", { class: "frente" }, actual.t),
       girada ? h("span", { class: "dorso" }, actual.d) : h("span", { class: "pista nota-pie" }, "Pulsa para girar"));
   }
   siguiente();
+  irArriba();
+}
+
+/* ---------- atlas de casos etnográficos ---------- */
+const CA = window.CASOS || [], CO = window.CORRIENTES || [], CN = window.CONCEPTOS || { nodos: [], aristas: [] }, LE = window.LECTURA || null;
+function vistaCasos() {
+  ficha.innerHTML = "";
+  ficha.append(h("p", { class: "etiqueta" }, "Estudio"), h("h2", {}, "Atlas de casos etnográficos"),
+    h("p", { class: "sub" }, `${CA.length} casos de los manuales, cada uno con lo que muestra, la lección que deja y la cautela con que hay que citarlo.`),
+    h("div", { class: "aviso" }, "En la prueba, un caso bien citado (quién, cuándo, dónde y con qué controversia) vale más que tres mencionados de pasada. Un caso mal usado resta."));
+  const sel = h("select", { id: "c-filtro" }, h("option", { value: "" }, "Todas las estaciones"), [...new Set(CA.map((c) => c.est))].map((id) => h("option", { value: id }, `Estación ${estPorId(id).num}: ${estPorId(id).titulo}`)));
+  const cont = h("div", { class: "casos" });
+  const pinta = () => {
+    cont.innerHTML = "";
+    CA.filter((c) => !sel.value || c.est === sel.value).forEach((c) => {
+      cont.append(h("article", { class: "caso", id: `caso-${c.id}`, "aria-labelledby": `caso-t-${c.id}` },
+        h("h3", { id: `caso-t-${c.id}` }, c.nombre),
+        h("p", { class: "caso-meta mono" }, `${c.lugar} · ${c.quien}`),
+        h("dl", { class: "caso-dl" },
+          h("dt", {}, "Qué muestra"), h("dd", {}, c.muestra),
+          h("dt", {}, "Lección para la asignatura"), h("dd", {}, c.leccion),
+          h("dt", {}, "Cítalo con cautela"), h("dd", { class: "cautela" }, c.cautela)),
+        h("div", { class: "reto-acciones" }, botonEst(c.est),
+          c.refs.length ? h("details", {}, h("summary", {}, "Referencias"), h("ul", { class: "refs" }, c.refs.filter((k) => R[k]).map((k) => h("li", { html: refHTML(k) })))) : null)));
+    });
+  };
+  sel.addEventListener("change", pinta);
+  ficha.append(h("div", { class: "campo" }, h("label", { for: "c-filtro" }, "Filtrar por estación"), sel), cont);
+  pinta();
+  irArriba();
+}
+
+/* ---------- comparador de corrientes ---------- */
+function vistaCorrientes() {
+  const COLS = [["origen", "Origen de la subordinación"], ["conceptos", "Conceptos clave"], ["autoras", "Autoras y autores"], ["critica", "Críticas que recibe"], ["pag", "Páginas"]];
+  let visibles = new Set(["origen", "conceptos", "critica"]), elegidas = new Set(CO.map((c) => c.id));
+  ficha.innerHTML = "";
+  ficha.append(h("p", { class: "etiqueta" }, "Estudio"), h("h2", {}, "Comparador de corrientes"),
+    h("p", { class: "sub" }, "Elige qué corrientes y qué dimensiones quieres comparar. Sirve para preparar el tema de desarrollo y para situar la filiación teórica de un texto en la PEC."));
+  const fsC = h("fieldset", { class: "chips" }, h("legend", {}, "Corrientes"));
+  CO.forEach((c) => { const id = `co-${c.id}`; const cb = h("input", { type: "checkbox", id, checked: true }); cb.addEventListener("change", () => { cb.checked ? elegidas.add(c.id) : elegidas.delete(c.id); pinta(); }); fsC.append(h("label", { for: id, class: "chip" }, cb, c.nombre)); });
+  const fsD = h("fieldset", { class: "chips" }, h("legend", {}, "Dimensiones"));
+  COLS.forEach(([k, n]) => { const id = `cd-${k}`; const cb = h("input", { type: "checkbox", id, checked: visibles.has(k) }); cb.addEventListener("change", () => { cb.checked ? visibles.add(k) : visibles.delete(k); pinta(); }); fsD.append(h("label", { for: id, class: "chip" }, cb, n)); });
+  const cont = h("div", {});
+  const pinta = () => {
+    cont.innerHTML = "";
+    const cols = COLS.filter(([k]) => visibles.has(k)), filas = CO.filter((c) => elegidas.has(c.id));
+    if (!filas.length || !cols.length) { cont.append(h("p", { class: "nota-pie" }, "Marca al menos una corriente y una dimensión.")); return; }
+    cont.append(tabla({ titulo: "Corrientes de la teoría y la antropología feministas según los manuales", cab: ["Corriente"].concat(cols.map(([, n]) => n)), filas: filas.map((c) => [c.nombre].concat(cols.map(([k]) => c[k]))) }));
+    cont.append(h("p", { class: "nota-pie" }, "Las corrientes se solapan y cada autora puede situarse en más de una; la tabla resume la presentación de los manuales, no una clasificación cerrada. Ve a la estación: ", filas.map((c, i) => [i ? " · " : "", botonEst(c.est, `${c.nombre} (estación ${estPorId(c.est).num})`)])));
+  };
+  ficha.append(fsC, fsD, cont);
+  pinta();
+  irArriba();
+}
+
+/* ---------- red de conceptos ---------- */
+function vistaConceptos() {
+  const N = CN.nodos, A = CN.aristas;
+  ficha.innerHTML = "";
+  ficha.append(h("p", { class: "etiqueta" }, "Estudio"), h("h2", {}, "Red de conceptos"),
+    h("p", { class: "sub" }, `${N.length} conceptos ordenados por bloque y ${A.length} relaciones. Pulsa un concepto para ver su definición, contra qué se formuló y con qué conceptos se relaciona.`));
+  const red = h("div", { class: "red-html" });
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(NS, "svg"); svg.setAttribute("class", "red-lineas"); svg.setAttribute("aria-hidden", "true");
+  red.append(svg);
+  const botones = {};
+  [1, 2, 3, 4].forEach((b) => {
+    const grupo = h("div", { class: "red-grupo" }, h("p", { class: "red-bloque" }, `Bloque ${b}`));
+    const fila = h("div", { class: "red-fila" });
+    N.filter((n) => n.b === b).forEach((n) => {
+      const bt = h("button", { type: "button", class: "red-nodo", "aria-pressed": "false", onclick: () => elegir(n.id) }, n.t);
+      botones[n.id] = bt; fila.append(bt);
+    });
+    grupo.append(fila); red.append(grupo);
+  });
+  const detalle = h("div", { class: "red-detalle", "aria-live": "polite" });
+  let sel = null;
+  function dibujar() {
+    while (svg.firstChild) svg.firstChild.remove();
+    const base = red.getBoundingClientRect();
+    svg.setAttribute("viewBox", `0 0 ${base.width} ${base.height}`); svg.setAttribute("width", base.width); svg.setAttribute("height", base.height);
+    const c = (id) => { const r = botones[id].getBoundingClientRect(); return { x: r.left - base.left + r.width / 2, y: r.top - base.top + r.height / 2 }; };
+    A.forEach(([a, b]) => {
+      if (!botones[a] || !botones[b]) return;
+      const p = c(a), q = c(b), mx = (p.x + q.x) / 2 + (p.y === q.y ? 0 : 30), my = (p.y + q.y) / 2 - (p.y === q.y ? 26 : 0);
+      const path = document.createElementNS(NS, "path");
+      path.setAttribute("d", `M${p.x},${p.y} Q${mx},${my} ${q.x},${q.y}`);
+      path.setAttribute("fill", "none");
+      path.setAttribute("class", "red-arista" + (sel && (a === sel || b === sel) ? " activa" : ""));
+      svg.append(path);
+    });
+  }
+  function elegir(id) {
+    sel = id; const n = N.find((x) => x.id === id);
+    const rel = A.filter(([a, b]) => a === id || b === id);
+    const vecinos = new Set(rel.map(([a, b]) => (a === id ? b : a)));
+    Object.entries(botones).forEach(([k, bt]) => { bt.setAttribute("aria-pressed", k === id ? "true" : "false"); bt.classList.toggle("vecino", vecinos.has(k)); });
+    dibujar();
+    detalle.innerHTML = "";
+    detalle.append(h("h3", {}, n.t), h("p", { class: "caso-meta mono" }, `${n.quien} · ${n.pag}`),
+      h("dl", { class: "caso-dl" }, h("dt", {}, "Qué es"), h("dd", {}, n.d), h("dt", {}, "Contra qué se formuló"), h("dd", {}, n.contra)),
+      rel.length ? h("div", {}, h("p", {}, h("strong", {}, "Relaciones")), h("ul", { class: "lista-plana" }, rel.map(([a, b, r]) => {
+        const otro = N.find((x) => x.id === (a === id ? b : a));
+        const bOtro = h("button", { type: "button", class: "enlace", onclick: () => { elegir(otro.id); botones[otro.id].focus(); } }, otro.t);
+        return a === id ? h("li", {}, `${n.t} → `, bOtro, `: ${r}`) : h("li", {}, bOtro, ` → ${n.t}: ${r}`);
+      }))) : null,
+      h("div", { class: "reto-acciones" }, botonEst(n.est)));
+  }
+  const listaAcc = h("details", { class: "red-lista" }, h("summary", {}, "Ver todas las relaciones como lista"),
+    h("ul", { class: "lista-plana" }, A.map(([a, b, r]) => { const na = N.find((x) => x.id === a), nb = N.find((x) => x.id === b); return h("li", {}, `${na.t} → ${nb.t}: ${r}`); })));
+  ficha.append(red, detalle, listaAcc,
+    h("p", { class: "nota-pie" }, "Las líneas resaltadas unen el concepto elegido con sus relacionados, que se marcan con borde. Es un mapa de estudio propuesto por el recurso a partir de los manuales: discútelo y complétalo con tus propias relaciones."));
+  new ResizeObserver(() => { if (red.isConnected) dibujar(); }).observe(red);
+  elegir(N[0].id);
+  irArriba();
+}
+
+/* ---------- lectura crítica (PEC) ---------- */
+function vistaLecturaCritica() {
+  if (!LE) return vistaInicio();
+  estado.lectura2 = estado.lectura2 || {};
+  ficha.innerHTML = "";
+  ficha.append(h("p", { class: "etiqueta" }, "Estudio"), h("h2", {}, "Taller de lectura crítica"),
+    h("p", { class: "sub" }, "Una pauta para analizar el texto de la PEC, o cualquier otro, con tus propias palabras y en relación con los manuales."),
+    h("div", { class: "aviso" }, LE.aviso),
+    h("div", { class: "aviso" }, "Este taller no redacta la PEC: te ayuda a organizar tu lectura. Escribe tú cada respuesta y, si la normativa de la asignatura lo pide, declara el uso de herramientas de inteligencia artificial."));
+  const total = h("p", { class: "contador", "aria-live": "polite" });
+  const areas = [];
+  const recuento = () => { const w = areas.reduce((s, a) => s + contarPalabras(a.value), 0); total.textContent = `Total: ${w} palabras en tus notas. La guía no fija la extensión de la PEC: atiende a lo que indique el enunciado en el curso virtual.`; };
+  LE.pasos.forEach((p, i) => {
+    const id = `lc-${p.id}`;
+    const ta = h("textarea", { id, rows: p.id === "ref" ? "2" : "4", class: "area", placeholder: p.ayuda });
+    ta.value = estado.lectura2[p.id] || ""; areas.push(ta);
+    ta.addEventListener("input", () => { estado.lectura2[p.id] = ta.value; recuento(); guardarPronto(); });
+    ficha.append(h("div", { class: "campo" }, h("label", { for: id }, h("strong", {}, `${i + 1}. ${p.t}`), h("span", { class: "nota-pie" }, ` ${p.ayuda}`)), ta));
+  });
+  recuento();
+  const salida = h("pre", { class: "salida", tabindex: "0", role: "region", "aria-label": "Lectura crítica reunida" });
+  const aviso = h("span", { class: "nota-pie", role: "status" });
+  const reunir = () => LE.pasos.map((p, i) => `${i + 1}. ${p.t.toUpperCase()}\n${estado.lectura2[p.id] || "(pendiente)"}`).join("\n\n");
+  const bCopiar = h("button", { type: "button", class: "boton primario" }, "Reunir y copiar");
+  bCopiar.addEventListener("click", () => { salida.textContent = reunir(); copiarTexto(salida.textContent, salida, aviso); });
+  ficha.append(total, h("div", { class: "reto-acciones" }, bCopiar, aviso, h("button", { type: "button", class: "boton", onclick: () => navegar("corrientes") }, "Abrir el comparador de corrientes")), salida);
+  ficha.append(h("details", { class: "guion" }, h("summary", {}, LE.ejemplo.titulo),
+    h("p", { class: "nota-pie" }, "Modelo construido solo con lo que el manual de Méndez dice del artículo. Para la PEC, lee el texto completo: el manual es una lectura de segunda mano."),
+    tabla({ titulo: "Pauta aplicada", cab: ["Paso", "Ejemplo"], filas: LE.ejemplo.filas })));
   irArriba();
 }
 
@@ -587,7 +820,7 @@ function navegar(destino, desdeHash) {
   const i = E.findIndex((e) => e.id === destino);
   if (i >= 0) { vistaEstacion(i); pintarIndice(destino); escena && escena.irA(i); return; }
   pintarIndice(null);
-  const vista = { estudio: vistaGuiaEstudio, tarjetas: vistaTarjetas, simulador: vistaSimulador, examen: vistaExamen, glosario: vistaGlosario, bibliografia: vistaBibliografia, guia: vistaGuia }[destino];
+  const vista = { estudio: vistaGuiaEstudio, tarjetas: vistaTarjetas, simulador: vistaSimulador, examen: vistaExamen, glosario: vistaGlosario, bibliografia: vistaBibliografia, guia: vistaGuia, casos: vistaCasos, corrientes: vistaCorrientes, conceptos: vistaConceptos, lectura: vistaLecturaCritica }[destino];
   if (vista) vista();
   else { vistaInicio(); if (escena) escena.vistaGeneral(); }
 }
@@ -611,20 +844,39 @@ $("#btn-glosario").addEventListener("click", () => navegar("glosario"));
 $("#btn-estudio").addEventListener("click", () => navegar("estudio"));
 $("#btn-tarjetas").addEventListener("click", () => navegar("tarjetas"));
 $("#btn-bibliografia").addEventListener("click", () => navegar("bibliografia"));
+$("#btn-casos").addEventListener("click", () => navegar("casos"));
+$("#btn-corrientes").addEventListener("click", () => navegar("corrientes"));
+$("#btn-conceptos").addEventListener("click", () => navegar("conceptos"));
+$("#btn-lectura-critica").addEventListener("click", () => navegar("lectura"));
 $("#btn-presentar").addEventListener("click", (ev) => {
   const on = document.body.classList.toggle("presentar");
   ev.currentTarget.setAttribute("aria-pressed", on ? "true" : "false");
 });
+/* modo lectura: oculta la escena y deja el ancho para la ficha (se recuerda en este navegador) */
+function ponerLectura(on) {
+  document.body.classList.toggle("lectura", on);
+  const b = $("#btn-lectura"); b.setAttribute("aria-pressed", on ? "true" : "false");
+  b.querySelector("span").textContent = on ? "Mostrar escena" : "Modo lectura";
+  estado.lectura = on; guardar();
+  if (escena) escena.setPausa(on || estado.pausaUsuario === true);
+}
+$("#btn-lectura").addEventListener("click", () => ponerLectura(!document.body.classList.contains("lectura")));
+$("#btn-ocultar").addEventListener("click", () => { ponerLectura(true); $("#btn-lectura").focus(); });
+/* la leyenda de la escena se retira tras la primera interacción o a los 12 s */
+const retirarLeyenda = () => { const l = $("#leyenda"); if (l) l.classList.add("retirada"); };
+$("#lienzo").addEventListener("pointerdown", retirarLeyenda, { once: true });
+setTimeout(retirarLeyenda, 12000);
 $("#btn-general").addEventListener("click", () => escena && escena.vistaGeneral());
 $("#btn-movimiento").addEventListener("click", (ev) => {
   if (!escena) return;
-  const p = !escena.getPausa(); escena.setPausa(p);
+  const p = !escena.getPausa(); escena.setPausa(p); estado.pausaUsuario = p; guardar();
   ev.currentTarget.setAttribute("aria-pressed", p ? "true" : "false");
   ev.currentTarget.textContent = p ? "Reanudar movimiento" : "Pausar movimiento";
 });
 
 /* ---------- arranque ---------- */
 ponerDocente(docente);
+if (estado.lectura) ponerLectura(true);
 leerHash();
 
 async function iniciarEscena() {
@@ -644,6 +896,7 @@ async function iniciarEscena() {
       }
     });
     carga.remove();
+    if (estado.lectura) escena.setPausa(true);
     if (escena.getPausa()) { const b = $("#btn-movimiento"); b.setAttribute("aria-pressed", "true"); b.textContent = "Reanudar movimiento"; }
     pintarIndice(location.hash.slice(1));
     const i = E.findIndex((e) => e.id === location.hash.slice(1)); if (i >= 0) escena.irA(i);

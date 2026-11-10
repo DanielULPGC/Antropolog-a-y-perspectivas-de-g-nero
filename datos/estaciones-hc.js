@@ -33,7 +33,7 @@ window.ESTACIONES = [
     { t: "Discurso de la inferioridad y de la excelencia", d: "Dos modalidades complementarias del discurso masculino sobre las mujeres: una las rebaja, la otra exalta sus «virtudes»; ambas legitiman la desigualdad (Crampe-Casnabet; HC, p. 36)." },
     { t: "Falacia de la naturaleza", d: "Operación por la que se presentan como hechos naturales lo que son prejuicios sociales, para fundar en ellos la desigualdad (HC, p. 52)." },
     { t: "Contrato sexual", d: "Pacto previo al contrato social por el que las mujeres quedan sujetas a los varones a cambio de sustento y protección; hipótesis de Pateman leída por Cobo en Rousseau (HC, p. 49)." },
-    { t: "Familia patriarcal reducida", d: "Modelo familiar de la Europa moderna que debilita los lazos comunitarios y de linaje, pero refuerza el poder del padre sobre esposa e hijos (Stone; HC, pp. 41-42)." },
+    { t: "Familia patriarcal reducida", d: "Modelo familiar que Stone (1977) sitúa en Europa entre finales del siglo XVI y el XVIII: la comunidad pierde peso en las alianzas matrimoniales y en el destino de sus miembros, pero se refuerza el poder del padre sobre esposa e hijos (HC, pp. 40-42)." },
     { t: "Renaturalización", d: "En Rousseau, regeneración del hombre civilizado mediante la razón, la voluntad general y un nuevo contrato social; no alcanza a las mujeres (HC, pp. 47-49)." }
   ],
   cita: { texto: "La opinión es la tumba de la virtud entre los hombres; pero su trono entre las mujeres.", fuente: "Rousseau, Emilio, citado por Wollstonecraft (2005 [1792], p. 226); en HC, p. 51" },
