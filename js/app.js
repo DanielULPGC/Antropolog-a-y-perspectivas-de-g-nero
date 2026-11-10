@@ -457,7 +457,7 @@ function vistaBibliografia() {
     ficha.append(h("h3", {}, nombre), h("ul", { class: "refs" }, claves.map((k) => h("li", { html: refHTML(k) }))));
   });
   ficha.append(h("h3", {}, "Créditos y advertencias"),
-    h("p", {}, "Recurso de estudio para la asignatura Antropología y perspectivas de género (Grado en Antropología Social y Cultural, UNED), elaborado con asistencia de un modelo de inteligencia artificial (Claude, Anthropic) en la redacción y la programación. Los textos son síntesis propias; las citas literales son breves y llevan página. Las páginas se cotejaron con los ejemplares aportados el 29 de octubre de 2026; los avisos «Lee con cautela» señalan erratas y fechas que difieren de la historiografía habitual. Versión 1.4 (9 de noviembre de 2026): bibliografía conforme a APA 7, cotejo de paráfrasis y nuevas herramientas de estudio."),
+    h("p", {}, "Recurso de estudio para la asignatura Antropología y perspectivas de género (Grado en Antropología Social y Cultural, UNED), elaborado con asistencia de un modelo de inteligencia artificial (Claude, Anthropic) en la redacción y la programación. Los textos son síntesis propias; las citas literales son breves y llevan página. Las páginas se cotejaron con los ejemplares aportados el 29 de octubre de 2026; los avisos «Lee con cautela» señalan erratas y fechas que difieren de la historiografía habitual. Versión 1.4.3 (10 de noviembre de 2026): cotejada con la guía 2026/2027 y auditada (citas, datos, accesibilidad y funcionamiento)."),
     h("p", {}, "Requiere revisión docente antes de su uso con alumnado. DOI incluidos solo cuando se han contrastado en la página del editor o en la lista verificada de la asignatura; el resto se cita sin DOI, como admite APA 7.ª. Escena 3D modelada por código con Three.js 0.160.0 (licencia MIT). Tipografías Fraunces, Atkinson Hyperlegible y JetBrains Mono (SIL Open Font License)."));
   irArriba();
 }
@@ -497,25 +497,25 @@ function mapaSVG() {
   const l = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="ar" marker-end="url(#pf)"/>`;
   return `<svg viewBox="0 0 400 600" role="group" aria-labelledby="mapa-t" aria-describedby="mapa-d" class="mapa">
   <title id="mapa-t">Mapa de la asignatura</title>
-  <desc id="mapa-d">Cuatro bloques encadenados: Ilustración (estaciones 1 y 2), teoría feminista de los siglos XIX y XX (3 a 5), antropología feminista de los setenta (6 a 8) y entramados teóricos y políticos (9 y 10). Cada caja enlaza con su estación.</desc>
+  <desc id="mapa-d">Cuatro bloques encadenados: Ilustración y orígenes del sujeto moderno (estaciones 1 a 3), teoría feminista de los siglos XIX y XX (4 y 5), antropología feminista de los setenta (6 a 8) y entramados teóricos y políticos (9 y 10). Cada caja enlaza con su estación.</desc>
   <defs><marker id="pf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="pf"/></marker></defs>
   ${enc(70, 6, 260, "Bloque 1 · Ilustración y sujeto moderno")}
-  ${caja(10, 40, 185, 54, ["1. Misoginia ilustrada", "contrato sexual · Rousseau"], "e1", HILOS[0])}
-  ${caja(205, 40, 185, 54, ["2. Vindicación", "Poullain · Gouges · Wollstonecraft"], "e2", HILOS[1])}
-  ${l(200, 96, 200, 124)}
+  ${caja(10, 40, 120, 62, ["1. Misoginia ilustrada", "contrato sexual", "Rousseau"], "e1", HILOS[0])}
+  ${caja(140, 40, 120, 62, ["2. Vindicación", "Poullain · Gouges", "Wollstonecraft"], "e2", HILOS[1])}
+  ${caja(270, 40, 120, 62, ["3. Sufragismo", "determinismo", "Mill y Taylor Mill"], "e3", HILOS[2])}
+  ${l(200, 104, 200, 124)}
   ${enc(70, 126, 260, "Bloque 2 · Teoría feminista, ss. XIX-XX")}
-  ${caja(10, 160, 120, 62, ["3. Sufragismo", "determinismo", "Mill y Taylor Mill"], "e3", HILOS[2])}
-  ${caja(140, 160, 120, 62, ["4. Socialismo", "salario familiar", "Zetkin · Kollontái"], "e4", HILOS[3])}
-  ${caja(270, 160, 120, 62, ["5. Academia", "Beauvoir · Friedan", "igualdad/diferencia"], "e5", HILOS[4])}
+  ${caja(10, 160, 185, 62, ["4. Socialismo", "salario familiar", "Zetkin · Kollontái"], "e4", HILOS[3])}
+  ${caja(205, 160, 185, 62, ["5. Academia", "Beauvoir · Friedan", "igualdad/diferencia"], "e5", HILOS[4])}
   ${l(200, 224, 200, 252)}
   ${enc(50, 254, 300, "Bloque 3 · Androcentrismo y crítica feminista")}
-  ${caja(10, 288, 120, 62, ["6. Malinowski", "Mead · Benedict", "todo dato se construye"], "e6", HILOS[5])}
-  ${caja(140, 288, 120, 62, ["7. Lévi-Strauss", "intercambio de mujeres", "Beauvoir: el Otro"], "e7", HILOS[6])}
-  ${caja(270, 288, 120, 62, ["8. Sexo social", "género · sistema", "sexo/género (Rubin)"], "e8", HILOS[7])}
+  ${caja(10, 288, 120, 62, ["6. Malinowski", "Mead · Benedict", "el dato se construye"], "e6", HILOS[5])}
+  ${caja(140, 288, 120, 62, ["7. Lévi-Strauss", "intercambio", "Beauvoir: el Otro"], "e7", HILOS[6])}
+  ${caja(270, 288, 120, 62, ["8. Sexo social", "género", "sexo/género (Rubin)"], "e8", HILOS[7])}
   ${l(200, 352, 200, 380)}
   ${enc(50, 382, 300, "Bloque 4 · Entramados teóricos y políticos")}
-  ${caja(10, 416, 185, 76, ["9. Origen de la subordinación", "patriarcado y matriarcado", "naturaleza/cultura · público/doméstico", "culturalistas · marxistas · materialistas"], "e9", HILOS[8])}
-  ${caja(205, 416, 185, 76, ["10. Heterogeneidad del sujeto", "Scott · Butler · Mathieu", "sexualidad y lógicas identitarias", "reflexividad epistémica"], "e10", HILOS[9])}
+  ${caja(10, 416, 185, 76, ["9. Origen de la subordinación", "patriarcado y matriarcado", "naturaleza/cultura", "público/doméstico"], "e9", HILOS[8])}
+  ${caja(205, 416, 185, 76, ["10. Sujeto heterogéneo", "Scott · Butler · Mathieu", "sexualidad e identidad", "reflexividad"], "e10", HILOS[9])}
   ${l(102, 494, 170, 528)}${l(298, 494, 230, 528)}
   ${caja(60, 530, 280, 60, ["Pregunta transversal de la Materia V:", "¿qué cambia en la práctica etnográfica", "cuando se aplica la crítica feminista?"], null, null)}
 </svg>`;
@@ -559,7 +559,7 @@ function vistaGuiaEstudio() {
     h("p", { class: "nota-pie" }, "Los productos propios importan más que las horas: un esquema construido se recuerda; un subrayado, no. Si hay que recortar, recorta lectura complementaria, nunca los simulacros."));
 
   ficha.append(h("h3", { id: "g-mapa" }, "Mapa de la asignatura"), h("div", { class: "mapa-caja", html: mapaSVG() }),
-    h("p", { class: "nota-pie" }, "Correspondencia propuesta por este recurso entre los cuatro bloques del programa y los capítulos de los manuales. La guía (cursos 2025/2026 y 2026/2027) agrupa los capítulos 1-3 de Hernández Corrochano bajo el pensamiento ilustrado y el sujeto moderno, y los capítulos 4-5 como puente hacia Méndez; aquí el capítulo 3 (siglo XIX) se sitúa en el bloque 2 por su cronología. Pulsa una caja para ir a su estación."));
+    h("p", { class: "nota-pie" }, "Correspondencia propuesta por este recurso entre los cuatro bloques del programa y los capítulos de los manuales. Sigue la guía 2026/2027: los capítulos 1-3 de Hernández Corrochano introducen el pensamiento ilustrado y los orígenes del sujeto moderno (bloque 1), y los capítulos 4-5 aportan las claves para abordar las tesis que desarrolla Méndez (bloque 2). Pulsa una caja para ir a su estación."));
 
   const tb = h("div", { id: "g-tablas" }, h("h3", {}, "Cuadros comparativos"));
   (GU.tablas || []).forEach((t) => tb.append(tabla(t)));

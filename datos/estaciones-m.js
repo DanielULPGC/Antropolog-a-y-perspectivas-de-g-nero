@@ -116,7 +116,7 @@ window.ESTACIONES.push(
   ],
   cita: { texto: "No se nace mujer: se llega a serlo. Ningún destino biológico, psíquico, económico, define la figura que reviste en el seno de la sociedad la hembra humana.", fuente: "Beauvoir (1978 [1949], p. 285); en M, p. 89" },
   matices: [
-    { t: "«Basta con cambiar los signos»", d: "En 1986 Lévi-Strauss afirmó que si las feministas prefieren decir que son las mujeres quienes intercambian hombres, «no altera la teoría» (M, p. 82). Méndez muestra por qué no es así: el sujeto del intercambio no puede ser a la vez su objeto (M, p. 87)." },
+    { t: "«Basta con reemplazar los signos»", d: "En una entrevista de 1986 en L'Express, Lévi-Strauss afirmó que si las feministas prefieren decir que son las mujeres quienes intercambian hombres, eso no altera la teoría: basta con invertir los signos (M, p. 82). Méndez muestra por qué no es así: el sujeto del intercambio no puede ser a la vez su objeto (M, p. 87)." },
     { t: "Traducciones de la frase de Beauvoir", d: "La sentencia circula con variantes («no se nace mujer: llega una a serlo»); cita la de M, p. 89, que da la página de su edición. Méndez la sitúa «mediado el primer volumen»; en el original francés abre el volumen II («La experiencia vivida»)." },
     { t: "Beauvoir no era antropóloga", d: "El segundo sexo es filosofía existencialista que usa datos etnográficos de forma selectiva (M, pp. 91-93); Méndez examina sus bases antropológicas, no la juzga como etnografía." }
   ],

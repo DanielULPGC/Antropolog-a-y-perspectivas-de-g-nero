@@ -175,7 +175,7 @@ window.ESTACIONES = [
 
 /* ===================================================================== 3 */
 {
-  id: "e3", num: 3, bloque: 2, manual: "HC", cap: 3, paginas: "pp. 70-88",
+  id: "e3", num: 3, bloque: 1, manual: "HC", cap: 3, paginas: "pp. 70-88",
   titulo: "La urna y el instinto",
   sub: "HC, cap. 3 · Un siglo de movimientos sociales, nuevas teorías y viejos desencuentros",
   lema: "Mientras unas reclamaban el voto, la ciencia ponía nombre «natural» a su desigualdad.",
@@ -372,7 +372,7 @@ window.ESTACIONES = [
   examen: [
     { q: "Exponga las principales tesis de Beauvoir en El segundo sexo según el manual.", claves: ["Lucha de sexos antes que de clases (HC, p. 112).", "«No se nace mujer, se llega a serlo» (HC, p. 113).", "Subjetividad, alteridad, ausencia de naturaleza femenina.", "Influencia mayor en el feminismo de la igualdad (HC, p. 112, n. 190)."] },
     { q: "¿Qué es «el problema que no tiene nombre»?", claves: ["Friedan, La mística de la feminidad (1963).", "Testimonios de mujeres blancas, de clase media y con estudios (HC, p. 116).", "Los síntomas son efecto, no causa, de la mística.", "La segunda fase: doble jornada y superwoman (HC, p. 118)."] },
-    { q: "Compare el feminismo de la igualdad y el de la diferencia.", claves: ["Igualdad: herencia ilustrada; género como construcción que superar.", "Diferencia: diferencia sexual, identidad femenina, sexualidad y lenguaje.", "Objetivo común: transformar el orden patriarcal (HC, p. 120).", "Cita de Sendón de León: «unas eligieron lo urgente y otras lo importante»."] },
+    { q: "Compare el feminismo de la igualdad y el de la diferencia.", claves: ["Igualdad: herencia ilustrada; género como construcción que superar.", "Diferencia: diferencia sexual, identidad femenina, sexualidad y lenguaje.", "Objetivo común: transformar el orden patriarcal (HC, p. 120).", "Cita de Sendón de León recogida por Varela: «unas eligieron lo urgente y otras nos encaminamos hacia lo importante» (HC, p. 120)."] },
     { q: "Según Harding, ¿qué caracteriza la investigación feminista?", claves: ["Tres líneas iniciales y sus desaciertos (HC, p. 121).", "Tres rasgos: recursos, propósitos, investigadora en el mismo plano crítico (HC, p. 122).", "Partir de la vida de las mujeres.", "Añadidos de la autora: transversalidad, carácter integral, agencia."] }
   ],
   conexiones: [["e7", "Méndez examina las bases antropológicas de El segundo sexo."], ["e9", "Friedan critica a Mead, Freud y el funcionalismo (M, pp. 129-130)."], ["e10", "La definición de género y la reflexividad epistémica en la práctica etnográfica."]],
